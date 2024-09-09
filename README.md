@@ -1,2 +1,1 @@
-# lojamobile
-Flçutter
+# Projects to study flutter
