@@ -29,6 +29,13 @@ class QuestionsAppState extends State<QuestionApp> {
     }
   }
 
+  void resetQuiz() {
+    setState(() {
+      questionSelected = 0;
+      choices = [];
+    });
+  }
+
   get hasQuestionSelected {
     return questionSelected < questions.length;
   }
@@ -78,6 +85,10 @@ class QuestionsAppState extends State<QuestionApp> {
                     Text(
                       'Sua casa de Hogwarts é: ${result[findMostFrequent(choices)]}',
                       style: const TextStyle(fontSize: 24),
+                    ),
+                    ElevatedButton(
+                      onPressed: resetQuiz, // Chama o método resetQuiz
+                      child: const Text("Tentar novamente"),
                     ),
                   ],
                 ),
