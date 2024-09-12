@@ -3,6 +3,7 @@ import './question.dart';
 import './answer.dart';
 import 'mocks/questions_mock.dart';
 import './utils/findMostFrequent.dart';
+import 'result.dart';
 
 void main() {
   runApp(const QuestionApp()); // Inicia o aplicativo com o widget QuestionApp.
@@ -73,25 +74,11 @@ class QuestionsAppState extends State<QuestionApp> {
                   ],
                 ),
               )
-            : Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Parabéns!!",
-                      style: TextStyle(fontSize: 28),
-                    ),
-                    // Calcula o número mais frequente quando a tela de "Parabéns" é exibida
-                    Text(
-                      'Sua casa de Hogwarts é: ${result[findMostFrequent(choices)]}',
-                      style: const TextStyle(fontSize: 24),
-                    ),
-                    ElevatedButton(
-                      onPressed: resetQuiz,
-                      child: const Text("Tentar novamente"),
-                    ),
-                  ],
-                ),
+            : Result(
+                result: result,
+                findMostFrequent: findMostFrequent,
+                choices: choices,
+                resetQuiz: resetQuiz,
               ), // Ambiente de resultado
       ),
     );
